@@ -38,6 +38,21 @@ server.addService(carsProto.CarService.service, {
     listCar(_, callback) {
         callback(null, {cars})
     },
+    getCar(call, callback) {
+        const existingCar = cars.find(c => c.id === call.request.id)
+        
+        if(existingCar) callback(null, {existingCar})
+        else callback({code: grpc.status.NOT_FOUND, details: "Car not found"})
+    },
+    createCar(call, callback) {
+        
+    },
+    deleteCar(call, callback) {
+    
+    },  
+    updateCar(call, callback) {
+        
+    },
 })
 
 server.bindAsync('0.0.0.0:8080', grpc.ServerCredentials.createInsecure(), () => {

@@ -1,10 +1,12 @@
 syntax = "proto3";
 
 service CarService {
-    rpc ListCar (Empty) returns (CarList) {}
+    rpc CreateCar(CreateCarRequest) returns (CreateCarResponse);
+    rpc DeleteCar(DeleteCarRequest) returns (DeleteCarResponse);
+    rpc GetCar(GetCarRequest) returns (GetCarResponse);
+    rpc ListCar(ListCarRequest) returns (ListCarResponse);
+    rpc UpdateCar(UpdateCarRequest) returns (UpdateCarResponse);
 }
-
-message Empty {}
 
 message Car {
     string nome = 1;
@@ -15,6 +17,41 @@ message Car {
     string id = 6;
 }
 
-message CarList {
+message CreateCarRequest {
+    Car car = 1;
+}
+
+message CreateCarResponse {
+    Car car = 1;
+}
+
+message GetCarRequest {
+	string id = 1;
+}
+
+message GetCarResponse {
+  Car car = 1;
+}
+
+message DeleteCarRequest {
+    string id = 1;
+}
+
+message DeleteCarResponse {
+    string id = 1;
+}
+
+message ListCarRequest {}
+
+message ListCarResponse {
     repeated Car cars = 1;
+}
+
+message UpdateCarRequest {
+    Car car = 1;
+    string id = 2;
+}
+
+message UpdateCarResponse {
+    Car car = 1;
 }
