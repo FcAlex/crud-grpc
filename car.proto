@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+service CarService {
+    rpc ListCar (Empty) returns (CarList) {}
+}
+
+message Empty {}
+
+message Car {
+    string nome = 1;
+    string marca = 2;
+    int32 anoFab = 3;
+    int32 anoMod = 4;
+    float preco = 5;
+    string id = 6;
+}
+
+message CarList {
+    repeated Car cars = 1;
+}
