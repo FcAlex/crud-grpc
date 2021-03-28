@@ -12,4 +12,5 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 
 const CarService = grpc.loadPackageDefinition(packageDefinition).CarService
 const client = new CarService('localhost:8080', grpc.credentials.createInsecure())
+
 export default client

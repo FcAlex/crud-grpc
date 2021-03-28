@@ -1,49 +1,68 @@
 import client from './client.js'
+import express from 'express'
+import viewExpress from 'express-react-views'
+import path from 'path'
 
-// client.listCar(null, (error, data) => {
-//     if (!error) {
-//         console.log(data)
-//     } else {
-//         console.error(error)
+const app = express()
+
+app.set('views', path.join(path.resolve(), 'client/views'))
+app.set('view engine', 'jsx')
+app.engine('jsx', viewExpress.createEngine())
+
+app.get("/", (_, res) => {
+    client.listCar(null, (_, data) => {
+        console.log('Client: listCar')
+        res.render('index', data);
+    })
+})
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running at port ${PORT}`);
+});
+
+// export default class ClientController {
+//     listAll() {
+        
 //     }
-// })
-
-// client.getCar({id: '34415c7c-f82d-4e44-88ca-ae2a1aaa92b7'}, (err, data) => {
-//     if (!err) {
-//         console.log(data)
-//     } else {
-//         console.error(err)
+    
+//     get(id) {
+//         client.getCar({id: id}, (err, data) => {
+//             if (!err) {
+//                 return data
+//             } else {
+//                 console.error(err)
+//             }
+//         })
 //     }
-// })
-
-// const obj = {
-//     nome: 'Gol',
-//     marca: 'Volkswagen',
-//     anoFab: 2008,
-//     anoMod: 2010,
-//     preco: 25850.99
+    
+//     create(car) {
+//         client.createCar(car, (err, data) => {
+//             if (!err) {
+//                 return data
+//             } else {
+//                 console.error(err)
+//             }
+//         })
+//     }
+    
+//     remove(id) {
+//         client.deleteCar({id: id}, (err, data) => {
+//             if (!err) {
+//                 return data
+//             } else {
+//                 console.error(err)
+//             }
+//         })
+//     }
+    
+//     removeAll() {
+//         client.deleteAllCars(null, (err, data) => {
+//             if (!err) {
+//                 return data
+//             } else {
+//                 console.error(err)
+//             }
+//         })
+//     }
 // }
-
-// client.createCar(obj, (err, data) => {
-//     if (!err) {
-//         console.log(data)
-//     } else {
-//         console.error(err)
-//     }
-// })
-
-// client.deleteCar({id: '34415c7c-f82d-4e44-88ca-ae2a1aaa92b7'}, (err, data) => {
-//     if (!err) {
-//         console.log(data)
-//     } else {
-//         console.error(err)
-//     }
-// })
-
-// client.deleteAllCars(null, (err, data) => {
-//     if (!err) {
-//         console.log(data)
-//     } else {
-//         console.error(err)
-//     }
-// })
