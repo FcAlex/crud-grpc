@@ -72,6 +72,11 @@ server.addService(carsProto.CarService.service, {
             callback(null, existingCar)
         } else callback({code: grpc.status.NOT_FOUND, details: "Car not found"})
     },
+    deleteAllCars(_, callback) {
+        cars.splice(0, cars.length)
+        console.log(cars)
+        callback(null, {})
+    }
 })
 
 server.bindAsync('0.0.0.0:8080', grpc.ServerCredentials.createInsecure(), () => {

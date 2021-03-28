@@ -6,6 +6,7 @@ service CarService {
     rpc GetCar(CarId) returns (Car);
     rpc ListCar(Empty) returns (CarList);
     rpc UpdateCar(CarUpdate) returns (Car);
+    rpc DeleteAllCars(Empty) returns (Empty);
 }
 
 message Car {
