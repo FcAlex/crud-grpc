@@ -40,18 +40,37 @@ server.addService(carsProto.CarService.service, {
     },
     getCar(call, callback) {
         const existingCar = cars.find(c => c.id === call.request.id)
-        
-        if(existingCar) callback(null, {existingCar})
+
+        if(existingCar) callback(null, existingCar)
         else callback({code: grpc.status.NOT_FOUND, details: "Car not found"})
     },
     createCar(call, callback) {
-        
+        let car = call.request
+        car.id = v4()
+        cars.push(car)
+
+        callback(null, car)
     },
     deleteCar(call, callback) {
-    
+        const existingCarIndex = cars.findIndex(c => c.id === call.request.id)
+
+        if(existingCarIndex != -1) {
+            cars.splice(existingCarIndex, 1)
+            callback(null, existingCarIndex)
+        } else callback({code: grpc.status.NOT_FOUND, details: "Car not found"})
     },  
     updateCar(call, callback) {
+        let existingCar = cars.find(c => c.id === call.request.id)
         
+        if(existingCar) {
+            existingCar.nome = call.request.car.nome
+            existingCar.marca = call.request.car.marca
+            existingCar.anoFab = call.request.car.anoFab
+            existingCar.anoMod = call.request.car.anoMod
+            existingCar.preco = call.request.car.preco
+            
+            callback(null, existingCar)
+        } else callback({code: grpc.status.NOT_FOUND, details: "Car not found"})
     },
 })
 
