@@ -16,6 +16,24 @@ app.get("/", (_, res) => {
     })
 })
 
+app.post("/save", (req, res) => {
+    console.log(req.body)
+    // let car = {
+    //     nome: req.body.nome,
+    //     marca: req.body.marca,
+    //     anoFab: req.body.anoFab,
+    //     anoMod: req.body.anoMod,
+    //     preco: req.body.preco
+    // }
+
+    // client.createCar(car, (error, data) => {
+    //     if (error) throw error
+
+    //     console.log('Car created successfully', data)
+        res.redirect("/")
+    // })
+}) 
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running at port ${PORT}`);
