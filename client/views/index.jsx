@@ -4,6 +4,10 @@ import Remove from './components/Remove.jsx'
 import Update from './components/Update.jsx'
 
 export default class extends React.Component {
+    constructor() {
+        super()
+    }
+
     render() {
         return (
             <html lang="pt-br">
@@ -59,8 +63,8 @@ export default class extends React.Component {
             children.push(<td>{cars[i].preco}</td>)
             children.push(
                 <td>
-                    <Update car={cars[i]} />
-                    <Remove carId={cars[i].id} />
+                    <Update car={cars[i]} index={i}/>
+                    <Remove carId={cars[i].id} index={i}/>
                 </td> 
             )
 
@@ -69,4 +73,5 @@ export default class extends React.Component {
 
         return table
     }
+
 }
