@@ -2,18 +2,19 @@ import React from 'react'
 
 export default class New extends React.Component {
     render() {
+        const car = this.props.car
         return (
             <div>
-                <button className="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#newCar">
-                    <i className="bi bi-plus"></i> Adicionar Carro
-                </button>
-
-                <form action="/save" method="post">
-                    <div className="modal fade" id="newCar" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <a className="btn" role="button" data-bs-toggle="modal" data-bs-target="#editCar">
+                    <i className="bi bi-pencil-square"></i>
+                </a>
+                
+                <form action="/update" method="post">
+                    <div className="modal fade" id="editCar" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Adicionar Veiculo</h5>
+                                    <h5 className="modal-title" id="exampleModalLabel">Atualizar Veiculo</h5>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body">
@@ -22,7 +23,7 @@ export default class New extends React.Component {
                                             <label htmlFor="nome" className="col-form-label">Nome: </label>
                                         </div>
                                         <div className="col-6">
-                                            <input type="text" id="nome" className="form-control" name="nome"/>
+                                            <input type="text" value={car.nome} id="nome" className="form-control" name="nome"/>
                                         </div>
                                     </div>
 
@@ -31,7 +32,7 @@ export default class New extends React.Component {
                                             <label htmlFor="marca" className="col-form-label">Marca: </label>
                                         </div>
                                         <div className="col-6">
-                                            <input type="text" id="marca" className="form-control" name="marca"/>
+                                            <input type="text" value={car.marca} id="marca" className="form-control" name="marca"/>
                                         </div>
                                     </div>
 
@@ -40,7 +41,7 @@ export default class New extends React.Component {
                                             <label htmlFor="anoFab" className="col-form-label">Ano de Fabricação: </label>
                                         </div>
                                         <div className="col-6">
-                                            <input type="number" min="1900" max="2021" id="anoFab" name="anoFab" className="form-control"/>
+                                            <input type="number" value={car.anoFab} min="1900" max="2021" id="anoFab" name="anoFab" className="form-control"/>
                                         </div>
                                     </div>
 
@@ -49,7 +50,7 @@ export default class New extends React.Component {
                                             <label htmlFor="anoMod" className="col-form-label">Ano do Modelo: </label>
                                         </div>
                                         <div className="col-6">
-                                            <input type="number" min="1900" max="2021" id="anoMod" name="anoMod" className="form-control"/>
+                                            <input type="number" value={car.anoMod} min="1900" max="2021" id="anoMod" name="anoMod" className="form-control"/>
                                         </div>
                                     </div>
 
@@ -58,13 +59,14 @@ export default class New extends React.Component {
                                             <label htmlFor="preco" className="col-form-label">Preço: </label>
                                         </div>
                                         <div className="col-6">
-                                            <input type="number" id="preco" className="form-control" name="preco"/>
+                                            <input type="number" value={car.preco} id="preco" className="form-control" name="preco"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="modal-footer">
+                                    <input type="hidden" name="id" value={car.id} className="form-control" required="required" />
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                    <button type="submit" className="btn btn-primary">Criar</button>
+                                    <button type="submit" className="btn btn-primary">Atualizar</button>
                                 </div>
                             </div>
                         </div>

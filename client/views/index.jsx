@@ -1,5 +1,7 @@
 import React from 'react'
-import New from './components/New.jsx'
+import New from './components/Create.jsx'
+import Remove from './components/Remove.jsx'
+import Update from './components/Update.jsx'
 
 export default class extends React.Component {
     render() {
@@ -57,13 +59,9 @@ export default class extends React.Component {
             children.push(<td>{cars[i].preco}</td>)
             children.push(
                 <td>
-                    <a className="btn" role="button" data-bs-toggle="modal" data-bs-target="#newCar">
-                        <i className="bi bi-pencil-square"></i>
-                    </a>
-                    <a className="btn" role="button">
-                        <i className="bi bi-trash"></i>
-                    </a>
-                </td>
+                    <Update car={cars[i]} />
+                    <Remove carId={cars[i].id} />
+                </td> 
             )
 
             table.push(<tr key={i}>{children}</tr>)
