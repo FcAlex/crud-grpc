@@ -27,7 +27,6 @@ export default class extends React.Component {
                     <div className="row d-flex flex-row-reverse">
                         <Create />
                         <RemoveAll />
-                        <Get />
                     </div>
                     <table className="table table-striped">
                         <thead className="text-center">
