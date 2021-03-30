@@ -63,48 +63,17 @@ app.post("/update", (req, res) => {
     })
 })
 
+app.post("/removeAll", (_, res) => {
+
+    client.deleteAllCars({}, (error, data) => {
+        if(error) throw error
+
+        console.log("All cars removed successfully", data)
+        res.redirect("/")
+    })
+})
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running at port ${PORT}`);
-});
-    
-//     get(id) {
-//         client.getCar({id: id}, (err, data) => {
-//             if (!err) {
-//                 return data
-//             } else {
-//                 console.error(err)
-//             }
-//         })
-//     }
-    
-//     create(car) {
-//         client.createCar(car, (err, data) => {
-//             if (!err) {
-//                 return data
-//             } else {
-//                 console.error(err)
-//             }
-//         })
-//     }
-    
-//     remove(id) {
-//         client.deleteCar({id: id}, (err, data) => {
-//             if (!err) {
-//                 return data
-//             } else {
-//                 console.error(err)
-//             }
-//         })
-//     }
-    
-//     removeAll() {
-//         client.deleteAllCars(null, (err, data) => {
-//             if (!err) {
-//                 return data
-//             } else {
-//                 console.error(err)
-//             }
-//         })
-//     }
-// }
+});  

@@ -1,7 +1,9 @@
 import React from 'react'
-import New from './components/Create.jsx'
+import Create from './components/Create.jsx'
 import Remove from './components/Remove.jsx'
 import Update from './components/Update.jsx'
+import RemoveAll from './components/RemoveAll.jsx'
+import Get from './components/Get.jsx'
 
 export default class extends React.Component {
     constructor() {
@@ -22,7 +24,11 @@ export default class extends React.Component {
             <body>
                 <div className="container">
                     <h1 className="text-center">Gerenciador de Carros</h1>
-                    <New />
+                    <div className="row d-flex flex-row-reverse">
+                        <Create />
+                        <RemoveAll />
+                        <Get />
+                    </div>
                     <table className="table table-striped">
                         <thead className="text-center">
                             <tr>

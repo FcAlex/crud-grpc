@@ -64,13 +64,13 @@ export default class New extends React.Component {
                                                 <label htmlFor="preco" className="col-form-label">Preço: </label>
                                             </div>
                                             <div className="col-6">
-                                                <input type="number" value={car.preco} id="preco" className="form-control" name="preco" />
+                                                <input type="number"defaultValue={car.preco} id="preco" className="form-control" name="preco" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="modal-footer">
-                                    <input type="hidden" name="id" className="form-control" value={car.id} required="required" />
+                                    <input type="hidden" name="id" className="form-control"defaultValue={car.id} required="required" />
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                                     <button type="submit" className="btn btn-primary">Atualizar</button>
                                 </div>

@@ -3,7 +3,7 @@ import React from 'react'
 export default class New extends React.Component {
     render() {
         return (
-            <div>
+            <div className="col-auto">
                 <a className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newCar">
                     <i className="bi bi-plus"></i> Adicionar Carro
                 </a>
